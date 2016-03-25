@@ -1,0 +1,38 @@
+<!--
+<ion-view title="Rooms" ng-controller="HomeController as home_ctrl">
+ 	<header class="bar bar-header bar-positive">
+ 		<h1 class="title">Rooms</h1>
+ 	</header>
+ 	
+  <ion-content class="has-header padding">
+	<div class="card" ng-repeat="room in home_ctrl.rooms">
+	  <div class="item item-text-wrap text-center" ng-click="enterRoom(room)">
+	    <strong>{{room}}</strong>
+	  </div>
+	</div>
+  </ion-content>
+
+</ion-view>
+-->
+	<ion-view style="" title="Chatz" ng-controller="HomeController as home_ctrl">
+    <header class="bar bar-header bar-positive">
+ 		<h1 class="title">Rooms</h1>
+ 	</header>
+    <ion-content class="has-header" overflow-scroll="true" padding="true">
+        <div style="" class="button-bar">
+            <a class="button button-positive  button-block icon ion-ios-telephone-outline" style="border-radius:0px 0px 0px 0px;" id="chatz-button1" ui-sref="callStats"></a>
+            <button class="button button-positive  button-block icon ion-android-chat" id="chatz-button2"></button>
+            <a class="button button-positive  button-block icon ion-android-add-circle" id="chatz-button3" ui-sref="online"></a>
+        </div>
+       
+            <div style="" class="item-thumbnail-center card " ng-repeat="room in home_ctrl.rooms">
+                <div class="item item-text-wrap text-center" ng-click="enterRoom(room)">
+	   				<img>
+                   <h2>Title</h2>
+                   <p>{{room}}</p>
+	               </div>
+                </ion-item>
+            </div>
+        
+    </ion-content>
+</ion-view>
