@@ -1,19 +1,4 @@
 <!--
-<ion-view title="Rooms" ng-controller="HomeController as home_ctrl">
- 	<header class="bar bar-header bar-positive">
- 		<h1 class="title">Rooms</h1>
- 	</header>
- 	
-  <ion-content class="has-header padding">
-	<div class="card" ng-repeat="room in home_ctrl.rooms">
-	  <div class="item item-text-wrap text-center" ng-click="enterRoom(room)">
-	    <strong>{{room}}</strong>
-	  </div>
-	</div>
-  </ion-content>
-
-</ion-view>
--->
 	<ion-view style="" title="Chatz" ng-controller="HomeController as home_ctrl">
     <header class="bar bar-header bar-positive">
  		<h1 class="title">Rooms</h1>
@@ -34,5 +19,44 @@
                 </ion-item>
             </div>
         
+    </ion-content>
+
+</ion-view title="friends">-->
+<ion-view view-title="Friends">
+    <ion-content ng-class="{expanded:isExpanded}">
+        <div class="content has-header">
+            <div class="list animate-fade-slide-in-right">
+                <a href="#/app/profile" class="item item-avatar item-icon-right">
+                    <img src="img/jon-snow.jpg">
+                    <h2>Jon Snow</h2>
+                    <p>Da illest illegitimate</p>
+                    <i class="icon ion-chatbubble muted"></i>
+                </a>
+                <a href="#/app/profile" class="item item-avatar item-icon-right">
+                    <img src="img/daenerys.jpg">
+                    <h2>Daenerys Targaryen</h2>
+                    <p>Dragon mommy</p>
+                    <i class="icon ion-chatbubble muted"></i>
+                </a>
+                <a href="#/app/profile" class="item item-avatar item-icon-right">
+                    <img src="img/arya.jpg">
+                    <h2>Arya Stark</h2>
+                    <p>Is Chuck Norris' fear</p>
+                    <i class="icon ion-chatbubble muted"></i>
+                </a>
+                <a href="#/app/profile" class="item item-avatar item-icon-right">
+                    <img src="img/sansa.jpg">
+                    <h2>Sansa Stark</h2>
+                    <p>&amp; Joffrey <strike>sitting</strike> sat in a tree</p>
+                    <i class="icon ion-chatbubble muted"></i>
+                </a>
+                <a href="#/app/profile" class="item item-avatar item-icon-right">
+                    <img src="img/tyrion.jpg">
+                    <h2>Tyrion Lannister</h2>
+                    <p>B.A.M.F. imp</p>
+                    <i class="icon ion-chatbubble muted"></i>
+                </a>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

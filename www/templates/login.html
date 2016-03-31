@@ -1,49 +1,19 @@
-<!--<ion-view title="Login" ng-controller="HomeController as home_ctrl">
- 	<header class="bar bar-header bar-positive">
- 		<h1 class="title">Login</h1>
- 	</header>
- 	
-  <ion-content class="has-header padding">
-	
-	<div class="list">
-		<label class="item item-input">
-			<input type="text" ng-model="home_ctrl.username" placeholder="User name">
-		</label>
-
-		<div class="padding">
-			<button class="button button-positive button-block" ng-click="login(home_ctrl.username)">Enter</button>
-		</div>
-	</div>
-
-  </ion-content>
-
-</ion-view>
-
--->
-
-<ion-view style="" title="Login" ng-controller="HomeController as home_ctrl" >
-    <header class="bar bar-header bar-positive">
- 		<h1 class="title">Login</h1>
- 	</header>
-    <ion-content class="has-header" overflow-scroll="true" padding="true">
-        <form style="" class="list">
-            <ion-list style="">
-                <label style="" class="item item-input">
-                    <span class="input-label">Username</span>
-                    <input placeholder="user name" type="text" ng-model="home_ctrl.username">
-                </label>
-                <label style="" class="item item-input">
-                    <span class="input-label">email</span>
-                    <input placeholder="email" type="email" ng-model="home_ctrl.email" >
-                </label>
-                 <label style="" class="item item-input">
-                    <span class="input-label">Password</span>
-                    <input placeholder="password" type="password" ng-model="home_ctrl.password" >
-                </label>
-            </ion-list>
-            <div style="height: 40px;" class="spacer"></div>
-            <button class="button button-stable  button-block" id="login-button4" ng-click="login(home_ctrl.username,home_ctrl.password,home_ctrl.email)">Log in</button>
-            <a class="button button-positive  button-block button-clear" id="login-button5" ui-sref="signup">Or create an account</a>
-        </form>
+<ion-view view-title="Login" align-title="left">
+    <ion-content style="background: url(img/login.jpg) center; background-size: cover;">
+        <div class="hero no-header flat">
+            <div class="content">
+                <div class="app-icon"></div>
+                <h1>Thronester</h1>
+            </div>
+        </div>
+        <div class="list">
+            <ion-md-input placeholder="please enter email" ng-model="email"type="email" style="color : white;"></ion-md-input>
+            <ion-md-input placeholder="Password" ng-model="password"  type="password" style="color : white;" ></ion-md-input>
+        </div>
+        <div class="padding">
+            <button ng-click="login(email,password)"class="button button-full button-assertive ink">Login</button>
+        </div>
+        <div style="text-align:center;"><a href="#/signup">Don't have an account Sign Up</a></div>
+        
     </ion-content>
 </ion-view>

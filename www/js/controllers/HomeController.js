@@ -31,7 +31,25 @@
 		//me.rooms = ['Coding', 'Art', 'Writing', 'Travel', 'Business', 'Photography'];
 
 
-		$scope.login = function(username,password,email){
+		$scope.login = function(password,email){
+			
+			$state.go("rooms");
+			/*localStorageService.set('username', username);
+             
+             var username = username;
+             var email = email;
+             var password = password;
+             var data = {
+             	"email" :email,
+             	"password":password,
+             	"location" :me.location
+             }
+			//we connect to the server
+		     SocketService.emit("login:user",JSON.stringify(data));
+*/
+			};
+		
+		$scope.signup = function(username,email,password){
 			
 			localStorageService.set('username', username);
              
@@ -44,10 +62,9 @@
              	"location" :me.location,
              	"username" : username
              }
-			//we connect to the server
-		     SocketService.emit("log:user",JSON.stringify(data));
-
-			};
+             SocketService.emit("signup:user",JSON.stringify(data));
+  
+        } 
          
           SocketService.on('log:success',function(data){
           		//var location  = $scope.getUserCurrentPosition();
@@ -56,7 +73,15 @@
 		//we set the current rooms
 		        $state.go('rooms');
 		});
-           SocketService.on('found:rooms',function(data){
+          
+          SocketService.on('signup:success',function(){
+
+          	$state.go("completeProfile");
+
+          });
+
+          
+          SocketService.on('found:rooms',function(data){
 
 			 var  users = JSON.parse(data);
 			 

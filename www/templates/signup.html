@@ -1,0 +1,19 @@
+<ion-view view-title="Login" align-title="left">
+    <ion-content style="background: url(img/login.jpg) center; background-size: cover;">
+        <div class="hero no-header flat">
+            <div class="content">
+                <div class="app-icon"></div>
+                <h1>Sign Up</h1>
+            </div>
+        </div>
+        <div class="list">
+            <ion-md-input placeholder="username" ng-model="username"type="text" style="color : white;"></ion-md-input>
+            <ion-md-input placeholder="email" ng-model="email"  type="email" style="color : white;" ></ion-md-input>
+            <ion-md-input placeholder="Password" ng-model="password"  type="password" style="color : white;" ></ion-md-input>
+        </div>
+        <div class="padding">
+            <button ng-click="signUp(username,password,email)"class="button button-full button-assertive ink">Sign Up</button>
+        </div>
+       
+    </ion-content>
+</ion-view>
