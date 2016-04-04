@@ -7,7 +7,7 @@ io.use(p2p);
 var reference = new Firebase('https://webtogocameroon.firebaseio.com/');
 
 io.on('connection', function(socket){
-     //
+    
      var date = new Date();
     date.setTime(date.getTime()+(2*24*60*60*1000)); // set day value to expiry
     var expires = "; expires="+date.toGMTString();
@@ -23,8 +23,7 @@ io.on('connection', function(socket){
     socket.on('leave:room', function(msg){
         msg.text = msg.user + " has left the room";
         socket.in(msg.room).emit('exit', msg);
-        socket.leave(msg.room);
-    });
+        socket.leave(msg.room); });
 
 
     socket.on('send:message', function(msg){
@@ -32,8 +31,24 @@ io.on('connection', function(socket){
     });
    //we list the rooms available
   
-   socket.on('log:user',function(data){
-     //we check if it is a new user
+   socket.on('app:login',function(data){
+      reference.authWithPassword({
+      email    : data.email,
+      password : data.password
+       }, function(error, authData) { 
+          
+          if(error){
+            socket.emit("app:login:failure");
+          }else socket.emit("app:login:success");
+
+       }, {
+      remember: "default"
+       });
+   });
+    //signups the user
+    socket.on('app:signup',function(data){
+       //we geT the data of the user
+        //we check if it is a new user
       var data =JSON.parse(data);
       reference.createUser({
       "email"    : data.email,
@@ -42,24 +57,19 @@ io.on('connection', function(socket){
       
       if (error) {
         console.log("Error creating user:", error);
+        socket.emit("app:signup:failure");
 
       } else {
-        console.log("Successfully created user account with uid:", userData.uid);
-       
-        var usersReference = new Firebase('https://webtogocameroon.firebaseio.com/users')
-        
-        socket.handshake.headers.cookie = "uid"+"="+userData.uid +"; "+"username"+"="+data.username+expires+"; path=/";
-        
-        usersReference.push({ "userid" : userData.uid,
+         var usersReference = new Firebase('https://webtogocameroon.firebaseio.com/users')
+         usersReference.push({ "userid" : userData.uid,
                              "location" : data.location,
                             "username" :data.username});
-        //we create databases for our users
-       
-      }
+        }
+        socket.emit('app:signup:success',userData.uid);
     });
-        socket.emit("log:success","bluf");
-   });
-
+       
+ });
+    socket.on('app:verify:username',function(username){}); 
     socket.on('get:rooms',function(positionObject1){
         //we form a rooms of all users
         var arrayUser = [];
